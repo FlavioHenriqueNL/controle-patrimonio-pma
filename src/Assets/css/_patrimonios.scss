@@ -1,0 +1,20 @@
+#patrimonio_index{
+  .tabela-patrimonios{
+    thead{
+      th{
+        position: relative;
+        text-align: center;
+        &:first-child,&:last-child{
+          width: 50px;
+        }
+      }
+    }
+    tbody{
+      td{
+        &:last-child{
+          text-align: center;
+        }
+      }
+    }
+  }
+}
