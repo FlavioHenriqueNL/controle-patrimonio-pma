@@ -43,8 +43,8 @@ const VerDetalhes = ({listaPatrimonios, patrimonio, setListaPatrimonio}) => {
             </Row>
             <Row>
               <Col xs={4}><label htmlFor="">Locação</label><input type="text" className="form-control" value={patrimonio.origem}/></Col>
-              <Col xs={4}><label htmlFor="">Setor</label><input type="text" className="form-control" value={patrimonio.origem_setor}/></Col>
-              <Col xs={4}><label htmlFor="">Responsável</label><input type="text" className="form-control" value={patrimonio.origem_responsavel}/></Col>
+              <Col xs={4}><label htmlFor="">Setor</label><input type="text" className="form-control" value={patrimonio.setor}/></Col>
+              <Col xs={4}><label htmlFor="">Responsável</label><input type="text" className="form-control" value={patrimonio.responsavel}/></Col>
             </Row>
           </Container>
         </Modal.Body>

@@ -28,9 +28,9 @@ const AdicionarPatrimonio = ({patrimonios, setListaPatrimonio}) => {
       descricao,
       marca, 
       origem: local,
-      origem_setor: setor,
-      origem_responsavel: responsavel, 
-      origem_dataLocacao: dataEntrega,
+      setor: setor,
+      responsavel: responsavel, 
+      dataLocacao: dataEntrega,
     }
     const response = await api.post('patrimonios', data);
     
