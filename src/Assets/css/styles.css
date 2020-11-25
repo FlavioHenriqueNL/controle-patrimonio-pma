@@ -1,0 +1,54 @@
+html, body, #root, main {
+  height: 100%;
+}
+
+.titulo {
+  margin: 25px 0;
+}
+
+.titulo h1, .titulo h2 {
+  font-weight: bold;
+}
+
+.titulo h1 {
+  font-size: 24px;
+}
+
+.titulo h2 {
+  font-size: 16px;
+}
+
+#patrimonio_index .tabela-patrimonios thead th {
+  position: relative;
+  text-align: center;
+}
+
+#patrimonio_index .tabela-patrimonios thead th:first-child, #patrimonio_index .tabela-patrimonios thead th:last-child {
+  width: 50px;
+}
+
+#patrimonio_index .tabela-patrimonios tbody td:last-child {
+  text-align: center;
+}
+
+#dashboard .lista-abas .links {
+  color: #fff;
+  background: #2b2e83;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 120px;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
+  font-weight: bold;
+  font-size: 25px;
+  text-decoration: none;
+  -webkit-transition: 0.5s all;
+  transition: 0.5s all;
+}
+
+#dashboard .lista-abas .links:hover {
+  background: #1e215d;
+}
+/*# sourceMappingURL=styles.css.map */
