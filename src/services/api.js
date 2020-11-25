@@ -1,7 +1,7 @@
 import axios from 'axios'; 
 require('dotenv').config();
 const api = axios.create({
-  baseURL: REACT_APP_API_URL
+  baseURL: "https://controlepatrimoniosms-backend.herokuapp.com/"
 });
 
 export default api;
