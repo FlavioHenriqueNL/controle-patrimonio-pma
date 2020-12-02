@@ -1,0 +1,32 @@
+.menu-icon {
+  font-size: 35px;
+  color: #2b2e83;
+}
+
+.navbar {
+  background: #fff !important;
+  border-bottom: 5px solid #2b2e83;
+  color: #2b2e83 !important;
+}
+
+.navbar .toolbar {
+  padding-right: 0;
+  padding-left: 0;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navbar .toolbar .logo-pref {
+  width: 15%;
+  margin-left: 25px;
+}
+
+.navbar .toolbar .info-usuario {
+  justify-self: flex-end;
+}
+
+.navbar .toolbar .info-usuario p {
+  margin: 0;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,25 @@
+.menu-icon{
+  font-size: 35px;
+  color: #2b2e83;
+}
+.navbar{
+  background: #fff !important;
+  border-bottom: 5px solid #2b2e83;
+  color: #2b2e83 !important;
+  .toolbar{
+    padding-right: 0;
+    padding-left: 0;
+    justify-content: space-between;
+    .logo-pref{
+      width: 15%;
+      margin-left: 25px;
+    }
+    .info-usuario{
+      justify-self: flex-end;
+      p{
+        margin: 0;
+      }
+    }
+  }
+
+}

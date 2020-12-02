@@ -1,12 +1,14 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Header from '../../Components/Navbar';
 
 const Dashboard = () => {
   return(
     <>
 
       <main id="dashboard">
+        <Header/>
         <Container>
           <Row>
             <div className="col-auto titulo">

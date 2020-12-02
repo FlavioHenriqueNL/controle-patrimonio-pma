@@ -21,8 +21,8 @@ const Relocar = (props) => {
     let data = {
       patrimonio_id: patrimonio.numero,
       origem: patrimonio.origem,
-      origem_setor: patrimonio.origem_setor,
-      origem_responsavel: patrimonio.origem_responsavel,
+      origem_setor: patrimonio.setor,
+      origem_responsavel: patrimonio.responsavel,
       destino,
       destino_setor: setor,
       destino_responsavel: responsavel,
@@ -58,8 +58,8 @@ const Relocar = (props) => {
             <Row className="mb-5">
               <Col xs={12}><p>DE:</p></Col>
               <Col xs={4}><label htmlFor="">Origem</label><input type="text" className="form-control" value={patrimonio.origem}/></Col>
-              <Col xs={4}><label htmlFor="">Setor</label><input type="text" className="form-control" value={patrimonio.origem_setor}/></Col>
-              <Col xs={4}><label htmlFor="">Responsável</label><input type="text" className="form-control" value={patrimonio.origem_responsavel}/></Col>
+              <Col xs={4}><label htmlFor="">Setor</label><input type="text" className="form-control" value={patrimonio.setor}/></Col>
+              <Col xs={4}><label htmlFor="">Responsável</label><input type="text" className="form-control" value={patrimonio.responsavel}/></Col>
             </Row>
             <Row className="mb-3">
               <Col xs={12}><p>PARA:</p></Col>
