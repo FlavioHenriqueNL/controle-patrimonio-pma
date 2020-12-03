@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Col, Container, Row, Table} from 'react-bootstrap';
-import TableFilter from 'react-table-filter';
-import 'react-table-filter/lib/styles.css';
-
 import VerDetalhes from './VerDetalhes';
 import AdicionarPatrimonio from './AdicionarPatrimonio';
+import TabelaPatrimonios from './TabelaPatrimonios';
 
 import api from '../../services/api';
 
@@ -12,15 +10,12 @@ import api from '../../services/api';
 
 const Patrimonio = () => {
 
-  const [listaPatrimonio, setListaPatrimonio] = useState([]);
-  const [auxPatrimonios, setAuxPatrimonios] = useState([]);
-  
-  const _filterUpdated = (newData, filtersObject) => setListaPatrimonio(newData); 
-  
+  const [listaPatrimonio, setListaPatrimonio] = useState([]);  
   async function getPatrimonios(){
-    const patrimonios = await api.get('patrimonios');
-    setListaPatrimonio(patrimonios.data);
+    let patrimonios = await api.get('patrimonios');
+    await setListaPatrimonio(patrimonios.data);    
   }
+
   useEffect(()=>{
     getPatrimonios();
   },[]);
@@ -36,34 +31,33 @@ const Patrimonio = () => {
             </div>
             <Col xs="auto"><AdicionarPatrimonio patrimonios={listaPatrimonio} setListaPatrimonio={setListaPatrimonio}/></Col>
           </Row>
-          <Table className="tabela-patrimonios" striped bordered hover size="sm">
+          {/* <Table className="tabela-patrimonios" striped bordered hover size="sm">
             <thead>
-              <TableFilter rows={listaPatrimonio} onFilterUpdate={_filterUpdated}>
-                <th filterkey="numero" casesensitive={'true'} showsearch={'true'}>Nº Patrimônio</th>
-                <th filterkey="descricao" casesensitive={'true'} showsearch={'true'}>Descrição</th>
-                <th filterkey="origem" casesensitive={'true'} showsearch={'true'}>Locação</th>
-                <th filterkey="origem_dataLocacao" casesensitive={'true'} showsearch={'true'}>Data Locação</th>
-                <th>Ver detalhes</th>
-              </TableFilter>
+              <th filterkey="auxPatrimonio.numero" >Nº Patrimônio</th>
+              <th filterkey="auxPatrimonio.descricao" >Descrição</th>
+              <th filterkey="auxPatrimonio.origem" >Locação</th>
+              <th filterkey="auxPatrimonio.dataLocacao" >Data Locação</th>
+              <th>Ver detalhes</th>
             </thead>
             <tbody>
-              {listaPatrimonio.map((patrimonio, index)=>(
-                <tr key={index}>
-                  <td>{patrimonio.numero}</td>
-                  <td>{patrimonio.descricao !== "" ? patrimonio.descricao : "Não informado"}</td> 
-                  <td>{patrimonio.origem !== "" ? patrimonio.origem : "Não informado"}</td> 
-                  <td>{patrimonio.origem_dataLocacao !== "" ? patrimonio.origem_dataLocacao : "Não informado"}</td> 
-                  <td>
-                    <VerDetalhes 
-                      listaPatrimonios={listaPatrimonio}
-                      setListaPatrimonio={setListaPatrimonio} 
-                      patrimonio={patrimonio} 
-                    />
-                  </td>
-                </tr>
-              ))}
+            {listaPatrimonio.map((patrimonio, index)=>(
+              <tr key={index}>
+                <td>{patrimonio.numero}</td>
+                <td>{patrimonio.descricao !== "" ? patrimonio.descricao : "Não informado"}</td> 
+                <td>{patrimonio.origem !== "" ? patrimonio.origem : "Não informado"}</td> 
+                <td>{new Date(patrimonio.dataLocacao).toLocaleDateString("pt-BR")}</td> 
+                <td>
+                  <VerDetalhes 
+                    listaPatrimonios={listaPatrimonio}
+                    setListaPatrimonio={setListaPatrimonio} 
+                    patrimonio={patrimonio} 
+                  />
+                </td>
+              </tr>
+            ))}
             </tbody>
-          </Table>
+          </Table> */}
+          <TabelaPatrimonios lista={listaPatrimonio} />
         </Container>
       </main>
     </>
