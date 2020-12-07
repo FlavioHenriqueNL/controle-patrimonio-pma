@@ -3,25 +3,27 @@ import {Col, Container, Row, Table} from 'react-bootstrap';
 import VerDetalhes from './VerDetalhes';
 import AdicionarPatrimonio from './AdicionarPatrimonio';
 import TabelaPatrimonios from './TabelaPatrimonios';
-
+import Navbar from '../../Components/Navbar';
+import '../../../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import api from '../../services/api';
 
 
 
 const Patrimonio = () => {
 
-  const [listaPatrimonio, setListaPatrimonio] = useState([]);  
+  const [listaPatrimonio, setListaPatrimonio] = useState([]); 
   async function getPatrimonios(){
-    let patrimonios = await api.get('patrimonios');
-    await setListaPatrimonio(patrimonios.data);    
+    let pat = await api.get('patrimonios');
+    return pat;
   }
-
-  useEffect(()=>{
-    getPatrimonios();
+  useEffect(async ()=>{
+    let pat = await getPatrimonios();
+    setListaPatrimonio(pat.data);   
   },[]);
 
   return(
     <>
+      <Navbar/>
       <main id="patrimonio_index">
         <Container>
           <Row className="justify-content-between align-items-center">
@@ -31,37 +33,13 @@ const Patrimonio = () => {
             </div>
             <Col xs="auto"><AdicionarPatrimonio patrimonios={listaPatrimonio} setListaPatrimonio={setListaPatrimonio}/></Col>
           </Row>
-          {/* <Table className="tabela-patrimonios" striped bordered hover size="sm">
-            <thead>
-              <th filterkey="auxPatrimonio.numero" >Nº Patrimônio</th>
-              <th filterkey="auxPatrimonio.descricao" >Descrição</th>
-              <th filterkey="auxPatrimonio.origem" >Locação</th>
-              <th filterkey="auxPatrimonio.dataLocacao" >Data Locação</th>
-              <th>Ver detalhes</th>
-            </thead>
-            <tbody>
-            {listaPatrimonio.map((patrimonio, index)=>(
-              <tr key={index}>
-                <td>{patrimonio.numero}</td>
-                <td>{patrimonio.descricao !== "" ? patrimonio.descricao : "Não informado"}</td> 
-                <td>{patrimonio.origem !== "" ? patrimonio.origem : "Não informado"}</td> 
-                <td>{new Date(patrimonio.dataLocacao).toLocaleDateString("pt-BR")}</td> 
-                <td>
-                  <VerDetalhes 
-                    listaPatrimonios={listaPatrimonio}
-                    setListaPatrimonio={setListaPatrimonio} 
-                    patrimonio={patrimonio} 
-                  />
-                </td>
-              </tr>
-            ))}
-            </tbody>
-          </Table> */}
-          <TabelaPatrimonios lista={listaPatrimonio} />
+          <TabelaPatrimonios dataPatrimonios={listaPatrimonio} setListaPatrimonio={setListaPatrimonio}/>
         </Container>
       </main>
     </>
   )
 }
+
+//COLOCAR O ADICIONAR PATRIMONIO DENTRO DA TABELA PATRIMONIOS PRA FICAR AO LADO DO SEARCH.
 
 export default Patrimonio;
