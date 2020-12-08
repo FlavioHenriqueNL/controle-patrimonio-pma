@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from "react";
-import {MDBDataTableV5, MDBTable, MDBTableBody, MDBTableHead} from "mdbreact";
+import React, {useContext} from "react";
+import {MDBDataTableV5} from "mdbreact";
 import VerDetalhes from './VerDetalhes';
+import {Context} from './Context';
+import { useEffect } from "react";
+import PatrimonioContext from './Context';
 
-const TabelaPatrimonios = ({dataPatrimonios, setListaPatrimonio}) => {
+const TabelaPatrimonios = () => {
 
-  let rowData = dataPatrimonios;
+  const [patrimonios, setPatrimonios] = useContext(Context);
 
-  rowData.forEach(data => {
-    let detalhe = <VerDetalhes 
-                    listaPatrimonios={rowData}
-                    setListaPatrimonio={setListaPatrimonio} 
-                    patrimonio={data} 
-                  />
-    data.detalhes = detalhe;
-  });
-  console.log(rowData)
+   
+    patrimonios.map(data => {
+      let detalhe = <VerDetalhes patrimonio={data} patrimonios={patrimonios} setPatrimonios={setPatrimonios} />
+      data.detalhes = detalhe;
+    });
+ 
+  
+
+
+  
+ 
   
   const data = {
     columns: [
@@ -24,7 +29,7 @@ const TabelaPatrimonios = ({dataPatrimonios, setListaPatrimonio}) => {
       {label: 'Data Locação', field: 'dataLocacao', sort: 'disabled'},
       {label: 'Ver Detalhes', field: 'detalhes', sort: 'disabled'}, 
     ],
-    rows: rowData
+    rows: patrimonios
   }
   
   

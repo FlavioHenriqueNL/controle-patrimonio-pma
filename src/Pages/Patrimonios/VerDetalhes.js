@@ -2,34 +2,31 @@ import React, {useState} from 'react';
 import {Container, Row, Col, Button, Modal} from 'react-bootstrap';
 import {FaSearch} from 'react-icons/fa';
 import api from '../../services/api';
-
 import Relocar from './Relocar';
 
-const VerDetalhes = ({listaPatrimonios, patrimonio, setListaPatrimonio}) => {
+
+const VerDetalhes = ({patrimonio, patrimonios, setPatrimonios}) => {
+  
+  
 
   const [isOpen, setIsOpen] = useState(false);
   const abrirModal = () => setIsOpen(true);
   const fecharModal = () => setIsOpen(false);
 
-  let lista = listaPatrimonios;
-
-  console.log(setListaPatrimonio);
+  
 
   async function excluirPatrimonio(){
-
     if(window.confirm("Você realmente deseja excluir esse patrimônio?")){
       try{
         await api.delete(`patrimonios/${patrimonio.numero}`);
-        setListaPatrimonio(lista.filter(p => p.numero !== patrimonio.numero));
+        setPatrimonios(patrimonios.filter(p => p.numero !== patrimonio.numero));
         alert("Patrimonio removido com sucesso!");
       }catch(e){
         alert(`Algum problema aconteceu, tente novamente mais tarde! ${e.message}`);
       }finally{
         fecharModal();
       }
-
     }
-
   }
 
   return(
@@ -54,7 +51,7 @@ const VerDetalhes = ({listaPatrimonios, patrimonio, setListaPatrimonio}) => {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="danger" onClick={excluirPatrimonio}>Excluir Patrimonio</Button>
-          <Relocar patrimonio={patrimonio} />
+          <Relocar patrimonio={patrimonio} patrimonios={patrimonios} setPatrimonios={setPatrimonios} />
         </Modal.Footer>
       </Modal>
 

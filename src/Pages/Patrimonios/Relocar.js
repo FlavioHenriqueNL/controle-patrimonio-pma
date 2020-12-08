@@ -5,17 +5,19 @@ import {FaExchangeAlt, FaSave} from 'react-icons/fa';
 import api from '../../services/api';
 
 
-const Relocar = (props) => {
+const Relocar = ({patrimonio, patrimonios, setPatrimonios}) => {
 
-  const patrimonio = props.patrimonio;
   const [isOpen, setIsOpen] = useState(false);
   const abrirModal = () => setIsOpen(true);
   const fecharModal = () => setIsOpen(false);
 
+  let handlePatrimonios = patrimonios;
+  let index = handlePatrimonios.indexOf(patrimonio);
+
   const [destino, setDestino] = useState('')
   const [setor, setSetor] = useState('')
   const [responsavel, setResponsavel] = useState('')
-  const [dataLocacao, setDataLocacao] = useState('Data de hoje')
+  const [dataLocacao, setDataLocacao] = useState('')
 
   async function realocarPatrimonio() {
     let data = {
@@ -32,15 +34,25 @@ const Relocar = (props) => {
       origem: destino,
       setor,
       responsavel,
-      origem_dataLocacao: dataLocacao
+      dataLocacao: dataLocacao
     }
+    
+    handlePatrimonios[index].origem = destino;
+    handlePatrimonios[index].setor = setor;
+    handlePatrimonios[index].responsavel = responsavel;
+    handlePatrimonios[index].dataLocacao = dataLocacao;
+
+
     try{
       await api.post('/movimentacoes', data);
       alert("Movimentação cadastrada com sucesso!");
       await api.put(`/patrimonios/${patrimonio.numero}`, update);
+      setPatrimonios(handlePatrimonios);
       alert("Patrimonio realocado com sucesso!");      
     }catch(e){
       alert(`Não foi possível realizar a ação: ${e.message}`);
+    }finally{
+      fecharModal();
     }
   }
 

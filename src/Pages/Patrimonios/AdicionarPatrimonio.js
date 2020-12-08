@@ -1,16 +1,18 @@
-import React,{useState} from 'react';
+import React,{useContext, useState} from 'react';
 import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import {AiOutlinePlus} from 'react-icons/ai'
 
 import api from '../../services/api';
 
-  
+import {Context} from './Context';
 
-const AdicionarPatrimonio = ({patrimonios, setListaPatrimonio}) => {
+const AdicionarPatrimonio = () => {
 
+  const [patrimonios, setPatrimonios] = useContext(Context);
   const [isOpen, setIsOpen] = useState(false);
   const abrirModal = () => {setIsOpen(true)}
   const fecharModal = () => {setIsOpen(false)}
+
 
   
   const [numero,setNumero] = useState('');
@@ -34,7 +36,7 @@ const AdicionarPatrimonio = ({patrimonios, setListaPatrimonio}) => {
     }
     const response = await api.post('patrimonios', data);
     
-    setListaPatrimonio([...patrimonios, data]);
+    setPatrimonios([...patrimonios, data]);
     
     alert("Patrimonio cadastrado!");
     fecharModal();
