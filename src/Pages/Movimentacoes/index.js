@@ -54,8 +54,7 @@ const Movimentacoes = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography color="textSecondary">
-                    The click event of the nested action will propagate up and expand the accordion unless
-                    you explicitly stop it.
+                    Funcionalidade em desenvolvimento.
                   </Typography>
                 </AccordionDetails>
               </Accordion>
