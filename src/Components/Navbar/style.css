@@ -29,4 +29,22 @@
 .navbar .toolbar .info-usuario p {
   margin: 0;
 }
+
+.drawer .MuiDrawer-paper {
+  width: 300px;
+}
+
+.drawer .closeDrawer {
+  margin-left: auto;
+}
+
+.drawer .listIcon svg {
+  font-size: 25px;
+}
+
+.drawer .listCollapse .listItem .listIcon svg {
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: 15px;
+}
 /*# sourceMappingURL=style.css.map */

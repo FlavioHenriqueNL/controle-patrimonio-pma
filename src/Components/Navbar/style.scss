@@ -21,5 +21,30 @@
       }
     }
   }
+}
+
+.drawer{
+  .MuiDrawer-paper{
+    width: 300px;
+  }
+  .closeDrawer{
+    margin-left: auto;
+  }
+  .listIcon{
+    svg{
+      font-size: 25px;
+    }
+  }
+  .listCollapse{
+    .listItem{
+      .listIcon{
+        svg{
+          font-size: 20px;
+          margin-left: auto;
+          margin-right: 15px;
+        }
+      }
+    }
+  }
 
 }
