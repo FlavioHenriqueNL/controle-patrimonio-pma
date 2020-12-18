@@ -24,6 +24,18 @@
 }
 
 .drawer{
+  .list{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    #logoutItem{
+      margin-top: auto;
+      color: red;
+      span{
+        font-weight: bold;
+      }
+    }
+  }
   .MuiDrawer-paper{
     width: 300px;
   }
