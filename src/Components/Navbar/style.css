@@ -29,4 +29,42 @@
 .navbar .toolbar .info-usuario p {
   margin: 0;
 }
+
+.drawer .list {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.drawer .list #logoutItem {
+  margin-top: auto;
+  color: red;
+}
+
+.drawer .list #logoutItem span {
+  font-weight: bold;
+}
+
+.drawer .MuiDrawer-paper {
+  width: 300px;
+}
+
+.drawer .closeDrawer {
+  margin-left: auto;
+}
+
+.drawer .listIcon svg {
+  font-size: 25px;
+}
+
+.drawer .listCollapse .listItem .listIcon svg {
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: 15px;
+}
 /*# sourceMappingURL=style.css.map */

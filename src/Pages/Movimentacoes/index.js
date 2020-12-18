@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
-import  {Accordion, AccordionSummary, AccordionDetails, 
-        Typography,Checkbox, FormControlLabel, 
-        } from '@material-ui/core';
-import {FaChevronDown} from 'react-icons/fa';
-
+import Navbar from '../../Components/Navbar';
 import api from '../../services/api';
+import TabelaMovimentacoes from './TabelaMovimentacoes';
 
 const Movimentacoes = () => {
 
   const [movimentacoes, setMovimentacoes] = useState([]);
 
-  async function getMovimentacoes(){
-    try{
-      let mov = await api.get('/movimentacoes');
-      setMovimentacoes(mov.data);
-    }catch(e){
-      alert(`Não foi possível buscar as últimas movimentações: ${e.message}`);
-    }
-  }
+  
 
   useEffect(()=>{
+    async function getMovimentacoes(){
+      try{
+        let mov = await api.get('/movimentacoes');
+        setMovimentacoes(mov.data);
+      }catch(e){
+        alert(`Não foi possível buscar as últimas movimentações: ${e.message}`);
+      }
+    }
     getMovimentacoes();
   },[])
 
   return(
     <>
+      <Navbar/>
       <main>
         <Container>
           <Row>
@@ -34,32 +33,7 @@ const Movimentacoes = () => {
               <h1>Controle de patrimônio - SMS Arapiraca</h1>
             </div>
           </Row>
-          {
-            movimentacoes.map((movimento)=>(
-              <Accordion key={movimento.id}>
-                <AccordionSummary
-                  expandIcon={<FaChevronDown />}
-                  aria-label="Expand"
-                  aria-controls="additional-actions1-content"
-                  id="additional-actions1-header"
-                >
-                  <FormControlLabel
-                    aria-label="Acknowledge"
-                    onClick={(event) => event.stopPropagation()}
-                    onFocus={(event) => event.stopPropagation()}
-                    control={<Checkbox />}
-                    label=""
-                  />
-                  {`Patrimonio: ${movimento.patrimonio_id} | Origem: ${movimento.origem} | Destino: ${movimento.destino} | Data: ${movimento.destino_dataLocacao}`}
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography color="textSecondary">
-                    Funcionalidade em desenvolvimento.
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-            ))
-          }
+          <TabelaMovimentacoes lista={movimentacoes}/>
         </Container>
       </main>
     </>

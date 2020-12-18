@@ -34,31 +34,25 @@ const AdicionarPatrimonio = () => {
       responsavel: responsavel, 
       dataLocacao: dataEntrega,
     }
-    const response = await api.post('patrimonios', data);
-    
-    setPatrimonios([...patrimonios, data]);
-    
-    alert("Patrimonio cadastrado!");
-    fecharModal();
 
+    try{
+      let response = await api.post('patrimonios', data);
+      alert(`Cadastro realizado com sucesso!`);
+      setPatrimonios([...patrimonios, data]);
+      fecharModal();
+    }catch(e){
+      switch(e.response.data.code){
+        case 11000:
+          alert(`Erro ao cadastrar Patrimônio: Já existe um patrimônio com esse número.`)
+      }
+      // alert(`Erro ao cadastrar o Patrimonio - ${e.response}`);
+      // console.log(e.response.menssage);
+      // console.log(e.response.data.code);
+      // console.log(e.code);
+    };    
   
   }
 
-  // Função que simula a validação do numero em um BD;
-  function deTeste(numeros){
-    console.log(`Numero digitado foi: ${numero}`);
-    if(numero != 8500 && numero != ''){
-      return true
-    }
-    return false
-    
-  }
-
-  function validarNumero(){
-    let numeroAValidar = numero;
-    const validacao = !deTeste(parseInt(numero)); // Passar a query do DB aqui.
-    setIsDisabled(validacao);    
-  }
 
   return(
     <>
@@ -70,11 +64,11 @@ const AdicionarPatrimonio = () => {
           Adicionar Patrimônio
         </Modal.Header>
         <Modal.Body>
-          <Container>
+        <Container>
             <Row className="mb-3">
               <Col xs={4}>
                 <label htmlFor="numero">Nº de Patrimônio</label>
-                <input type="text" className="form-control" id="numero" onChange={(e) => setNumero(e.target.value)} onBlur={(e) => validarNumero()} required/>
+                <input type="text" className="form-control" id="numero" onChange={(e) => setNumero(e.target.value)} required/>
               </Col>
             </Row>
             <Row className="mb-3">
@@ -108,7 +102,7 @@ const AdicionarPatrimonio = () => {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-            <Button disabled={isDisabled} type="submit" variant="success" onClick={cadastrarPatrimonio}>Cadastrar Patrimônio</Button>
+            <Button type="submit" variant="success" onClick={cadastrarPatrimonio}>Cadastrar Patrimônio</Button>
         </Modal.Footer>
       </Modal>
     </>

@@ -21,5 +21,42 @@
       }
     }
   }
+}
+
+.drawer{
+  .list{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    #logoutItem{
+      margin-top: auto;
+      color: red;
+      span{
+        font-weight: bold;
+      }
+    }
+  }
+  .MuiDrawer-paper{
+    width: 300px;
+  }
+  .closeDrawer{
+    margin-left: auto;
+  }
+  .listIcon{
+    svg{
+      font-size: 25px;
+    }
+  }
+  .listCollapse{
+    .listItem{
+      .listIcon{
+        svg{
+          font-size: 20px;
+          margin-left: auto;
+          margin-right: 15px;
+        }
+      }
+    }
+  }
 
 }
