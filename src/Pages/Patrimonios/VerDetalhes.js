@@ -6,28 +6,9 @@ import Relocar from './Relocar';
 
 
 const VerDetalhes = ({patrimonio, patrimonios, setPatrimonios}) => {
-  
-  
-
   const [isOpen, setIsOpen] = useState(false);
   const abrirModal = () => setIsOpen(true);
   const fecharModal = () => setIsOpen(false);
-
-  
-
-  async function excluirPatrimonio(){
-    if(window.confirm("Você realmente deseja excluir esse patrimônio?")){
-      try{
-        await api.delete(`patrimonios/${patrimonio.numero}`);
-        setPatrimonios(patrimonios.filter(p => p.numero !== patrimonio.numero));
-        alert("Patrimonio removido com sucesso!");
-      }catch(e){
-        alert(`Algum problema aconteceu, tente novamente mais tarde! ${e.message}`);
-      }finally{
-        fecharModal();
-      }
-    }
-  }
 
   return(
     <>
@@ -50,7 +31,6 @@ const VerDetalhes = ({patrimonio, patrimonios, setPatrimonios}) => {
           </Container>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={excluirPatrimonio}>Excluir Patrimonio</Button>
           <Relocar patrimonio={patrimonio} patrimonios={patrimonios} setPatrimonios={setPatrimonios} />
         </Modal.Footer>
       </Modal>

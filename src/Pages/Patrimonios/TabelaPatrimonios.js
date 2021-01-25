@@ -1,19 +1,26 @@
 import React, {useContext} from "react";
 import {MDBDataTableV5} from "mdbreact";
 import VerDetalhes from './VerDetalhes';
+import EditarPatrimonio from './EditarPatrimonio';
 import {Context} from './Context';
 import { useEffect } from "react";
 import PatrimonioContext from './Context';
 
-const TabelaPatrimonios = () => {
+const TabelaPatrimonios = ({isPage}) => {
 
   const [patrimonios, setPatrimonios] = useContext(Context);
 
-   
+  isPage !== 'editar' ?
     patrimonios.map(data => {
       let detalhe = <VerDetalhes patrimonio={data} patrimonios={patrimonios} setPatrimonios={setPatrimonios} />
       data.detalhes = detalhe;
-    });
+    })
+  :
+    patrimonios.map(data => {
+      let detalhe = <EditarPatrimonio patrimonio={data} patrimonios={patrimonios} setPatrimonios={setPatrimonios} />
+      data.detalhes = detalhe;
+    })
+  ;
  
   
 

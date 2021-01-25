@@ -1,4 +1,4 @@
-import {FiMenu, FiPlus, FiLogOut} from 'react-icons/fi';
+import {FiMenu, FiPlus, FiLogOut, FiEdit} from 'react-icons/fi';
 import {FaExchangeAlt, FaListAlt} from 'react-icons/fa';
 import {HiOutlineDesktopComputer} from 'react-icons/hi';
 import {MdExpandLess, MdExpandMore} from 'react-icons/md';
@@ -49,13 +49,17 @@ const MenuLateral = () => {
           </ListItem>
           <Collapse className="listCollapse" in={collapsed.patrimonio} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItem className="listItem" button onClick={() => history.push('patrimonios/novo')}>
+              <ListItem className="listItem" button onClick={() => history.push('/patrimonios')}>
+                <ListItemIcon className="listIcon"><FaListAlt/></ListItemIcon>
+                <ListItemText primary="Lista de Patrimonios" />
+              </ListItem>
+              <ListItem className="listItem" button onClick={() => history.push('/patrimonios/novo')}>
                 <ListItemIcon className="listIcon"><FiPlus/></ListItemIcon>
                 <ListItemText primary="Adicionar Patrimônio" />
               </ListItem>
-              <ListItem className="listItem" button onClick={() => history.push('patrimonios')}>
-                <ListItemIcon className="listIcon"><FaListAlt/></ListItemIcon>
-                <ListItemText primary="Lista de Patrimonios" />
+              <ListItem className="listItem" button onClick={() => history.push('/patrimonios/editar')}>
+                <ListItemIcon className="listIcon"><FiEdit/></ListItemIcon>
+                <ListItemText primary="Editar Patrimônio" />
               </ListItem>
             </List>
           </Collapse>
