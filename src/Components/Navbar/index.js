@@ -10,13 +10,14 @@ const Navbar = () => {
 
   return(
     <>
+    
       <AppBar position="static" className="navbar">
         <Container>
           <Toolbar className="toolbar">
             <MenuLateral/>
             <img className="logo-pref" src={logoPref} alt="Prefeitura Municipal de Arapiraca"/>
             <div className="info-usuario">
-              <p>Nome do usuário</p>
+              <p>Usuario</p>
             </div>
           </Toolbar>
         </Container>

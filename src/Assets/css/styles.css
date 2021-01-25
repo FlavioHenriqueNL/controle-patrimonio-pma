@@ -51,4 +51,9 @@ html, body, #root, main {
 #dashboard .lista-abas .links:hover {
   background: #1e215d;
 }
+
+.pagination-buttons {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
 /*# sourceMappingURL=styles.css.map */
