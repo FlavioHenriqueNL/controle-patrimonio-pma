@@ -73,11 +73,11 @@ const MenuLateral = () => {
           </ListItem>
           <Collapse className="listCollapse" in={collapsed.movimentacao} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItem className="listItem" button onClick={() => history.push('movimentacao/novo')}>
+              <ListItem className="listItem" button onClick={() => history.push('/movimentacao/novo')}>
                 <ListItemIcon className="listIcon"><FiPlus/></ListItemIcon>
                 <ListItemText primary="Adicionar Movimentação" />
               </ListItem>
-              <ListItem className="listItem" button onClick={() => history.push('movimentacoes')}>
+              <ListItem className="listItem" button onClick={() => history.push('/movimentacoes')}>
                 <ListItemIcon className="listIcon"><FaListAlt/></ListItemIcon>
                 <ListItemText primary="Lista de Movimentações" />
               </ListItem>

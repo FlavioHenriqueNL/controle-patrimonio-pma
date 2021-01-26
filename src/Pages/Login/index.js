@@ -55,7 +55,7 @@ export default function Login(){
       localStorage.setItem("auth-token", loginResultado.data.token);
       history.push("/");
     }catch(err){
-      alert(err.response.data.msg)
+      alert(err)
     }
   }
 
