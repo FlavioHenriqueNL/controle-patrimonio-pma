@@ -23,6 +23,9 @@ const Dashboard = () => {
             <Col md={6} xs={12} className="mb-3">
               <Link className="links" to="/movimentacoes">Movimentações</Link>
             </Col>
+            <Col md={6} xs={12} className="mb-3">
+              <Link className="links" to="/boletim">Boletim</Link>
+            </Col>
           </Row>
         </Container>
       </main>

@@ -41,7 +41,7 @@ const EditarPatrimonio = ({patrimonio, patrimonios, setPatrimonios}) => {
       responsavel
     ];
     try{
-      await api.put(`/patrimonios/editar/${patrimonio.numero}`, data);
+      await api.put(`/patrimonios/editar/:${patrimonio.numero}`, data);
       alert("Editado com sucesso! \(Isso é só um teste blz?\)");
       fecharModal();
     }catch(e){

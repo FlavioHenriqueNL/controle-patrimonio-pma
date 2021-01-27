@@ -8,6 +8,7 @@ import Dashboard from '../Pages/Dashboard';
 import Movimentacoes from '../Pages/Movimentacoes';
 import UsuariosContext from '../Contexts/Usuario.context';
 import api from '../services/api';
+import Boletim from '../Components/Boletim';
 
 
 const Routes = () => { 
@@ -79,6 +80,7 @@ const Routes = () => {
           <PrivateRoute exact path="/patrimonios/editar" component={PatrimoniosEditar} />
           <PrivateRoute exact path="/movimentacoes" component={Movimentacoes} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/boletim" component={Boletim} />
         </Switch>
     </UsuariosContext.Provider>
       </BrowserRouter>
